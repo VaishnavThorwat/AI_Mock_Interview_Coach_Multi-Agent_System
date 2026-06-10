@@ -43,7 +43,7 @@ def run_evaluation(
         agents=[evaluator_agent],
         tasks=[task],
         process=Process.sequential,
-        verbose=True,
+        verbose=False,
     )
 
     result = crew.kickoff(

@@ -1,18 +1,29 @@
 import os
 import sys
+import litellm
+
+# Disable CrewAI telemetry/tracing to prevent async console output during the interview
+os.environ["CREWAI_DISABLE_TELEMETRY"] = "true"
+os.environ["CREWAI_TELEMETRY_OPT_OUT"] = "true"
+os.environ["OTEL_SDK_DISABLED"] = "true"
+
+# Suppress LiteLLM warnings
+os.environ["LITELLM_LOG"] = "ERROR"
+
 import json
 import litellm
 from datetime import datetime
 from dotenv import load_dotenv
 from crew import run_research, run_evaluation
-from agent import interviewer_agent  # backstory used as system prompt
+from agent import interviewer_agent , load_prompt # backstory used as system prompt
 
 load_dotenv()
 
 MODEL     = "groq/llama-3.3-70b-versatile"
+litellm.suppress_debug_info = True
 MAX_TURNS = 8
 
-
+interviewer_agent_backstory = load_prompt("interviewer.txt")
 # ─────────────────────────────────────────────────────────────────────────────
 # Phase 2 — Live chat loop (Agent 2)
 #
@@ -45,7 +56,7 @@ def conduct_interview(
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         "YOUR INSTRUCTIONS:\n"
         "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
-        + interviewer_agent.backstory
+        + interviewer_agent_backstory
     )
 
     messages: list[dict] = [{"role": "system", "content": system_prompt}]

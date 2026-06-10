@@ -1,0 +1,32 @@
+[
+    {
+        "turn": 1,
+        "question": "Before we dive in, could you give me a quick overview of your background and what brings you to this interview today?",
+        "answer": "I have two years of experience as a data analyst at a retail company, working mainly with Excel and some SQL.",
+        "edge_case": null
+    },
+    {
+        "turn": 2,
+        "question": "Walk me through how you would approach cleaning a dataset that has missing values and duplicates.",
+        "answer": "[Candidate chose to skip this question]",
+        "edge_case": "skipped"
+    },
+    {
+        "turn": 3,
+        "question": "Write a SQL query to find the top 5 customers by total revenue in the last 90 days.",
+        "answer": "[No response]",
+        "edge_case": "blank"
+    },
+    {
+        "turn": 4,
+        "question": "A key metric drops 20% week-over-week. How would you investigate?",
+        "answer": "I don't know the exact framework, but I think I'd start by checking whether the data pipeline had any issues, then try to break the metric down by different dimensions to see where the drop is concentrated.",
+        "edge_case": "i_dont_know"
+    },
+    {
+        "turn": 5,
+        "question": "How would you explain the difference between mean and median to a non-technical stakeholder?",
+        "answer": "I would use a salary example. If nine people earn fifty thousand and one person earns five hundred thousand, the mean is ninety five thousand which nobody actually earns. The median of fifty thousand is what most people experience. I always reach for concrete numbers when explaining this.",
+        "edge_case": null
+    }
+]

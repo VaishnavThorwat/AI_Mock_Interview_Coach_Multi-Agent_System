@@ -19,7 +19,14 @@ def create_research_task(research_agent):
         "Not provided". This changes the Candidate Profile Notes section.
 
         STEP 2 — RESEARCH:
-        Use your search tool to find:
+        You MUST use the web search tool to gather recent data. Do NOT answer purely from memory.
+        
+        Recommended search queries to run with the tool:
+        - "{target_role} interview questions {interview_type} 2026"
+        - "{target_role} {interview_type} interview what companies test for"
+        - "{target_role} common interview mistakes"
+
+        Find:
         - What this role actually does day-to-day
         - The core knowledge areas tested in a {interview_type} interview
           for {target_role}
@@ -40,6 +47,9 @@ def create_research_task(research_agent):
         at this role. Each bullet: concept name + one line on why it matters.]
 
         ## Most Asked Interview Questions (10 questions)
+        [CRITICAL: You MUST extract real, advanced questions found in the search results (e.g., LLMOps, Hallucinations, System Design). 
+        DO NOT output generic beginner questions like "What is supervised learning?" or "What is overfitting?".]
+        
         For each question use this format:
 
         Q: [question text]
@@ -66,6 +76,9 @@ def create_research_task(research_agent):
         RULES:
         - Do not invent candidate experience not mentioned in the background
         - Every line must be specific to this role and interview type
+        - You MUST use the web search tool at least once before providing the final answer.
+        - Read the tool's Observation results carefully before writing the brief.
+        - EXTRACT the exact questions from the search snippets. DO NOT invent generic ML questions.
         - If search returns nothing, use training knowledge and note:
           "[Based on general knowledge — search unavailable]"
         """,
